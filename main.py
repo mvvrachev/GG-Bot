@@ -21,6 +21,7 @@ async def join(ctx):
 @client.command()
 async def daniele(ctx):
   await ctx.send("Daniele stiga me qdosva!")
+  await ctx.message.delete()
 
 @client.command()
 async def daniele1(ctx, *arg):
@@ -28,12 +29,14 @@ async def daniele1(ctx, *arg):
   for i in arg:
     result += " " + i
   await ctx.send(result)
+  await ctx.message.delete()
 
 @client.command()
 async def lut(ctx):
   user = str(ctx.author)
+  u = user[:-5]
 
-  await ctx.send("Eeeeeeee " + user + " mnooo si lut, be lutko")
+  await ctx.send("Eeeeeeee " + u + " mnooo si lut, be lutko")
 
 @client.command()
 async def joined(ctx, *, member: discord.Member):
@@ -41,7 +44,6 @@ async def joined(ctx, *, member: discord.Member):
 
 @client.command()
 async def join(ctx):
-  await ctx.send(ctx.channel)
-
+  await client.connect()
 
 client.run(os.environ['TOKEN'])
