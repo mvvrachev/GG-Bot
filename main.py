@@ -1,22 +1,13 @@
 import os
 import discord
 from discord.ext import commands
+import time
 
 client = commands.Bot(command_prefix = "%")
 
 @client.event
 async def on_ready():
   print("We have logged in as {0.user}".format(client))
-
-  '''@client.command(pass_context = True)
-async def join(ctx):
-  user = ctx.message.author
-  voice_channel = user.voice.channel
-
-  if voice_channel!= None:
-    await client.join_channel(voice_channel)
-  else:
-      await client.say('Vlez v channel mrusniko!')'''
 
 @client.command()
 async def daniele(ctx):
@@ -35,8 +26,8 @@ async def daniele1(ctx, *arg):
 async def lut(ctx):
   user = str(ctx.author)
   u = user[:-5]
-
   await ctx.send("Eeeeeeee " + u + " mnooo si lut, be lutko")
+  await ctx.message.delete()
 
 @client.command()
 async def joined(ctx, *, member: discord.Member):
@@ -44,6 +35,11 @@ async def joined(ctx, *, member: discord.Member):
 
 @client.command()
 async def join(ctx):
-  await client.connect()
+  if ctx.message.author.voice is None:
+    await ctx.send("Vlez v channel palavniko!")
+  else:
+     vc = ctx.message.author.voice.channel
+     vclient = await vc.connect()
+     await vclient.disconnect()
 
 client.run(os.environ['TOKEN'])
