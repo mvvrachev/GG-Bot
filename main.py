@@ -1,7 +1,7 @@
 import os
 import discord
 from discord.ext import commands
-import time
+import asyncio
 
 client = commands.Bot(command_prefix = "%")
 
@@ -34,12 +34,23 @@ async def joined(ctx, *, member: discord.Member):
     await ctx.send('{0} joined on {0.joined_at}'.format(member))
 
 @client.command()
-async def join(ctx):
+async def natupan(ctx):
   if ctx.message.author.voice is None:
     await ctx.send("Vlez v channel palavniko!")
   else:
-     vc = ctx.message.author.voice.channel
-     vclient = await vc.connect()
-     await vclient.disconnect()
+    voice_channel = ctx.message.author.voice.channel
+    voice_client = await voice_channel.connect()
+    audio_src = discord.FFmpegPCMAudio('natupan.mp3')
+    voice_client.play(audio_src)
 
+@client.command()
+async def misho(ctx):
+  if ctx.message.author.voice is None:
+    await ctx.send("Vlez v channel palavniko!")
+  else:
+    voice_channel = ctx.message.author.voice.channel
+    voice_client = await voice_channel.connect()
+    audio_src = discord.FFmpegPCMAudio('misho.mp3')
+    voice_client.play(audio_src)
+    
 client.run(os.environ['TOKEN'])
