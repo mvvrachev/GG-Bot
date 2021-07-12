@@ -1,7 +1,7 @@
 import os
 import discord
 from discord.ext import commands
-import asyncio
+import time
 
 client = commands.Bot(command_prefix = "%")
 
@@ -40,8 +40,15 @@ async def natupan(ctx):
   else:
     voice_channel = ctx.message.author.voice.channel
     voice_client = await voice_channel.connect()
-    audio_src = discord.FFmpegPCMAudio('natupan.mp3')
+    audio_src = discord.FFmpegPCMAudio('./audio_files/natupan.mp3')
     voice_client.play(audio_src)
+    while 1:
+      if(voice_client.is_playing()):
+        continue
+      else:
+        await voice_client.disconnect()
+        break
+    await ctx.message.delete()
 
 @client.command()
 async def misho(ctx):
@@ -50,7 +57,14 @@ async def misho(ctx):
   else:
     voice_channel = ctx.message.author.voice.channel
     voice_client = await voice_channel.connect()
-    audio_src = discord.FFmpegPCMAudio('misho.mp3')
+    audio_src = discord.FFmpegPCMAudio('./audio_files/misho.mp3')
     voice_client.play(audio_src)
+    while 1:
+      if(voice_client.is_playing()):
+        continue
+      else:
+        await voice_client.disconnect()
+        break
+    await ctx.message.delete()
     
 client.run(os.environ['TOKEN'])
