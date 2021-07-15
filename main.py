@@ -33,41 +33,6 @@ async def lut(ctx):
 async def joined(ctx, *, member: discord.Member):
     await ctx.send('{0} joined on {0.joined_at}'.format(member))
 
-'''@client.command()
-async def natupan(ctx):
-  if ctx.message.author.voice is None:
-    await ctx.send("Vlez v channel palavniko!")
-  else:
-    voice_channel = ctx.message.author.voice.channel
-    voice_client = await voice_channel.connect()
-    audio_src = discord.FFmpegPCMAudio('./audio_files/natupan.mp3')
-    voice_client.play(audio_src)
-    while 1:
-      if(voice_client.is_playing()):
-        continue
-      else:
-        await voice_client.disconnect()
-        break
-    await ctx.message.delete()
-
-@client.command()
-async def misho(ctx):
-  if ctx.message.author.voice is None:
-    await ctx.send("Vlez v channel palavniko!")
-  else:
-    voice_channel = ctx.message.author.voice.channel
-    voice_client = await voice_channel.connect()
-    audio_src = discord.FFmpegPCMAudio('./audio_files/misho.mp3')
-    voice_client.play(audio_src)
-    while 1:
-      if(voice_client.is_playing()):
-        continue
-      else:
-        await voice_client.disconnect()
-        break
-    await ctx.message.delete()'''
-
-
 @client.command(aliases=['p', 'paly', 'Play', 'P'])
 async def play(ctx, *arg):
   if len(arg) == 0:
@@ -82,6 +47,24 @@ async def play(ctx, *arg):
         audio_src = discord.FFmpegPCMAudio('./audio_files/misho.mp3')
       elif arg[0] == 'natupan':
         audio_src = discord.FFmpegPCMAudio('./audio_files/natupan.mp3')
+      elif arg[0] == 'brukni':
+        audio_src = discord.FFmpegPCMAudio('./audio_files/brukni_si.mp3')
+      elif arg[0] == 'luja':
+        audio_src = discord.FFmpegPCMAudio('./audio_files/edna_luja.mp3')
+      elif arg[0] == 'leshta':
+        audio_src = discord.FFmpegPCMAudio('./audio_files/leshta.mp3')
+      elif arg[0] == 'molq':
+        audio_src = discord.FFmpegPCMAudio('./audio_files/molq_te.mp3')
+      elif arg[0] == 'pomnish':
+        audio_src = discord.FFmpegPCMAudio('./audio_files/pomnish_che_sum_pil.mp3')
+      elif arg[0] == 'shishko':
+        audio_src = discord.FFmpegPCMAudio('./audio_files/shishko.mp3')
+      elif arg[0] == 'svqt':
+        audio_src = discord.FFmpegPCMAudio('./audio_files/svqt_s_v.mp3')
+      elif arg[0] == 'piqna':
+        audio_src = discord.FFmpegPCMAudio('./audio_files/tq_e_pqna.mp3')
+      elif arg[0] == 'zdrasti':
+        audio_src = discord.FFmpegPCMAudio('./audio_files/zdrasti_misho.mp3')
       else:
         await ctx.send("Nqma takuv nali4en fail palavniko!")
 
