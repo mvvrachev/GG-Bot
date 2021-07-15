@@ -99,8 +99,9 @@ async def fart(ctx):
         break
     await ctx.message.delete()
 
-
-
+@client.command()
+async def commands(ctx):
+  await ctx.send('```%daniele\n\n%daniele1 *TEXT*\n\n%joined *@USER*\n\n%lut\n\n%fart\n\n%p *natupan/misho/brukni/luja/leshta/molq/pomnish/shishko/svqt/piqna/zdrasti*```')
  
 keep_alive()
 client.run(os.environ['TOKEN'])
