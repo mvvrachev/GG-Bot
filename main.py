@@ -2,6 +2,7 @@ import os
 import discord
 from discord.ext import commands
 import random
+from web_server import keep_alive
 
 client = commands.Bot(command_prefix = "%")
 
@@ -97,5 +98,9 @@ async def fart(ctx):
         await voice_client.disconnect()
         break
     await ctx.message.delete()
+
+
+
  
+keep_alive()
 client.run(os.environ['TOKEN'])
